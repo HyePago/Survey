@@ -8,8 +8,12 @@
 </head>
 <body>
 	<div class="choice_div">
-		<input type="button" value="만들기" class="choice_btn" onclick="location.href='make_servey.jsp'"><br>
-		<input type="button" value="투표하기" class="choice_btn">
+		<table class="choice_table">
+			<tr>
+				<td><div onclick="location.href='vote_servey.jsp'" class="choice_btn_div"><h3>투표하기</h3></div></td>
+				<td><div onclick="location.href='resultChoice.jsp'" class="choice_btn_div"><h3>결과보기</h3></div></td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

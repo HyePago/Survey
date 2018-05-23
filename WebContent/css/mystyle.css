@@ -2,17 +2,43 @@
 .main_section {
 	text-align: center;
 	width: 1300px;
+	margin: auto;
 }
 .choice_div {
 	background-color: white;
-	border-radius: 15px;
+	border-radius: 2px;
 	margin: auto;
-	width: 500px;
-	text-align: center;
-	margin-top: 300px;
+	margin-top: 70px;
+	width: 700px;
+	text-align: left;
+	padding: 20px;
 }
 .choice_btn {
 	border-radius: 15px;
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+.table_vote {
+	text-align: left;
+}
+.choice_table {
+	text-align: center;
+	width: 700px;
+}
+.choice_btn_div {
+	border: 1px solid gray;
+	width: 300px;
+	height: 300px;
+	margin: auto;
+	text-align: center;
+}
+.choice_btn_div:hover {
+	background-color: #BDBDBD;
+}
+.choice_btn_div h3 {
+	marign: auto;
+	width: 300px;
+	height: 100px;
+	vertical-align: middle;
+	margin-top: 130px;
 }
