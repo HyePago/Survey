@@ -86,7 +86,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="제출"> </td>
+					<td>
+						<input type="submit" value="제출"> 
+						<input type="button" onclick="location.href='resultChoice.jsp'" value="처음으로">	
+					</td>
 				</tr>
 			</table>
 		</div>
