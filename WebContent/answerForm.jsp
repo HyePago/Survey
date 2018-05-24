@@ -32,6 +32,10 @@
 			pageNumber = "1";
 		}
 		
+		if(Integer.parseInt(pageNumber) < 1){
+			pageNumber = "1";
+		}
+		
 		try{
 			int i = 1;
 			reader = new BufferedReader(new FileReader(filePath));
@@ -61,19 +65,35 @@
 			e.printStackTrace();
 		}
 		
+		if(Integer.parseInt(pageNumber) > totalNumber){
+			pageNumber = totalNumber+"";
+			
+			
+			out.println("<script>location.href='answer.jsp?pageNumber=1';</script>");
+		}
+		
 		if(totalNumber == 0){
 			out.println("<script>alert('아직 설문이 아무것도 없습니다.');history.back();</script>");
 		}
 	%>
+	
+	<script>
+		function movePage() {
+			
+			number = document.getElementById("current_page").value;
+			location.href="answer.jsp?pageNumber="+number;
+		}
+	</script>
 	
 	<form>
 		<div class="choice_div">
 			<table>
 				<tr>
 					<td>
-						<input type="number" size="3" value="<%= pageNumber %>" readonly="readonly"> / <%= totalNumber %> &nbsp;
+						<input type="number" name="current_page" id="current_page" size="3" value="<%= pageNumber %>"> / <%= totalNumber %> &nbsp;
 						<input type="button" value="이전" onclick="location.href='answer.jsp?pageNumber=<%=Integer.parseInt(pageNumber)-1%>'" >&nbsp;
 						<input type="button" value="다음" onclick="location.href='answer.jsp?pageNumber=<%=Integer.parseInt(pageNumber)+1%>'" >
+						<input type="button" value="이동" onclick="movePage()">
 						<hr>
 					</td>
 				</tr>
