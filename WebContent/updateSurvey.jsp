@@ -46,7 +46,7 @@
 				
 				String[] info = str.split("\t");
 				
-				if((!(name.equals(info[0]))) && (!(password.equals(info[1])))){
+				if(!(name.equals(info[0]) && password.equals(info[1]))){
 					writer.println(str);
 				}
 				
