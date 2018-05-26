@@ -10,7 +10,7 @@
 	<div class="choice_div">
 		<table class="choice_table">
 			<tr>
-				<td><div onclick="location.href='resultView.jsp'" class="choice_btn_div"><h3>요약</h3></div></td>
+				<td><div onclick="location.href='manager_resultView.jsp'" class="choice_btn_div"><h3>요약</h3></div></td>
 				<td><div onclick="location.href='answer.jsp'" class="choice_btn_div"><h3>응답</h3></div></td>
 			</tr>
 		</table>

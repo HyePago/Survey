@@ -172,7 +172,7 @@
 				<tr>
 					<td>
 						<input type="button" value="삭제" onclick="location.href='deleteSurvey.jsp?name=<%= name %>&password=<%=password%>'">
-						<input type="button" value="전체 결과보기" onclick="location.href='resultView.jsp'">
+						<input type="button" value="전체 결과보기" onclick="location.href='manager_resultView.jsp'">
 						<input type="button" value="처음으로" onclick="location.href='manager.jsp'">
 					</td>
 				</tr>

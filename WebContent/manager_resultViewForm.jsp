@@ -1,41 +1,9 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.BufferedReader"%>
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.io.BufferedWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String filePath = application.getRealPath("/WEB-INF/survey/list.txt");
-	
-	BufferedReader reader = null;
-		
-	int question_01[] = new int[]{0,0,0,0,0};
-	int question_02[] = new int[]{0,0,0,0,0};
-	int question_03[] = new int[]{0,0,0,0};
-	int question_04[] = new int[]{0,0,0,0};
-	int question_05[] = new int[]{0,0,0,0,0};
-	
-	try{
-		reader = new BufferedReader(new FileReader(filePath));
-		
-		while(true){
-			String str = reader.readLine();
-			
-			if(str == null) break;
-			
-			String[] info = str.split("\t");
-			
-			question_01[Integer.parseInt(info[2])-1]++;
-			question_02[Integer.parseInt(info[3])-1]++;
-			question_03[Integer.parseInt(info[4])-1]++;
-			question_04[Integer.parseInt(info[5])-1]++;
-			question_05[Integer.parseInt(info[6])-1]++;
-		}
-	} catch(Exception e){
-		e.printStackTrace();
-	}
-%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,9 +12,63 @@
 <script src="Nwagon.js"></script>
 </head>
 <body>
+	<%
+		String filePath = application.getRealPath("/WEB-INF/survey/list.txt");
+		
+		BufferedReader reader = null;
+		
+		ArrayList<String> username = new ArrayList<String>();
+		int question_01[] = new int[]{0,0,0,0,0};
+		int question_02[] = new int[]{0,0,0,0,0};
+		int question_03[] = new int[]{0,0,0,0};
+		int question_04[] = new int[]{0,0,0,0};
+		int question_05[] = new int[]{0,0,0,0,0};
+		
+		int i = 0;
+		
+		try{
+			reader = new BufferedReader(new FileReader(filePath));
+			
+			while(true){
+				String str = reader.readLine();
+				
+				if(str == null) break;
+				
+				String[] info = str.split("\t");
+				
+				username.add(i, info[0]);
+				i++;
+				
+				question_01[Integer.parseInt(info[2])-1]++;
+				question_02[Integer.parseInt(info[3])-1]++;
+				question_03[Integer.parseInt(info[4])-1]++;
+				question_04[Integer.parseInt(info[5])-1]++;
+				question_05[Integer.parseInt(info[6])-1]++;
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+	%>
 	
 	<div class="choice_div">
 		<table>
+			<tr>
+				<td><input type="button" value="기록 다 지우기" onclick="location.href='delete_all.jsp'"></td>
+			</tr>
+			<tr>
+				<td> 투표한 사람 목록 </td>
+			</tr>
+			<tr>
+				<td>
+					<div style="overflow:scroll; width:600px; height:150px; padding:10px;">
+						<ul class="manager_View_Form_ul">
+							<% for(i = 0; i<username.size(); i++) { %>
+								<li> <a href="answer.jsp?pageNumber=<%= i+1 %>"><%= username.get(i) %></a> </li>
+							<% } %>
+						</ul>
+					</div>
+				</td>
+			</tr>
 			<tr>
 				<td>눈 앞에 여러가지 물건이 있다. <br> 제일 먼저 잡고 싶은 물건은 무엇인가?</td>
 			</tr>
@@ -286,6 +308,5 @@
 	Nwagon.chart(options4);
 	Nwagon.chart(options5);
 </script>
-
 </body>
 </html>
