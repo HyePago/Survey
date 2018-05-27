@@ -24,6 +24,8 @@
 		int question_04[] = new int[]{0,0,0,0};
 		int question_05[] = new int[]{0,0,0,0,0};
 		
+		int person_number = 0;
+		
 		int i = 0;
 		
 		try{
@@ -44,6 +46,8 @@
 				question_03[Integer.parseInt(info[4])-1]++;
 				question_04[Integer.parseInt(info[5])-1]++;
 				question_05[Integer.parseInt(info[6])-1]++;
+				
+				person_number++;
 			}
 		} catch(Exception e){
 			e.printStackTrace();
@@ -56,7 +60,7 @@
 				<td><input type="button" value="기록 다 지우기" onclick="location.href='delete_all.jsp'"></td>
 			</tr>
 			<tr>
-				<td> 투표한 사람 목록 </td>
+				<td> 투표한 사람 목록 (<%= person_number %>)</td>
 			</tr>
 			<tr>
 				<td>

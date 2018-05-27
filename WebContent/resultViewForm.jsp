@@ -15,6 +15,8 @@
 	int question_04[] = new int[]{0,0,0,0};
 	int question_05[] = new int[]{0,0,0,0,0};
 	
+	int person_number = 0;
+	
 	try{
 		reader = new BufferedReader(new FileReader(filePath));
 		
@@ -30,6 +32,8 @@
 			question_03[Integer.parseInt(info[4])-1]++;
 			question_04[Integer.parseInt(info[5])-1]++;
 			question_05[Integer.parseInt(info[6])-1]++;
+			
+			person_number++;
 		}
 	} catch(Exception e){
 		e.printStackTrace();
@@ -47,6 +51,9 @@
 	
 	<div class="choice_div">
 		<table>
+			<tr>
+				<td>총 참여 인원 : <%= person_number %> <hr></td>
+			</tr>
 			<tr>
 				<td>눈 앞에 여러가지 물건이 있다. <br> 제일 먼저 잡고 싶은 물건은 무엇인가?</td>
 			</tr>
