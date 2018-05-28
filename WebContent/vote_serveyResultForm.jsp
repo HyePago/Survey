@@ -1,10 +1,3 @@
-<%@page import="java.io.FileInputStream"%>
-<%@page import="java.io.InputStreamReader"%>
-<%@page import="java.io.FileReader"%>
-<%@page import="java.io.BufferedReader"%>
-<%@page import="java.io.FileWriter"%>
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.io.BufferedWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,13 +8,7 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("utf-8");
-	
-		String filePath = application.getRealPath("/WEB-INF/survey/list.txt");
-	
-		String name = request.getParameter("name");
-		String pw = request.getParameter("pw");
-		
+		request.setCharacterEncoding("UTF-8");
 		String q1 = request.getParameter("q1");
 		String q2 = request.getParameter("q2");
 		String q3 = request.getParameter("q3");
@@ -33,22 +20,6 @@
 		String return_q3 = null;
 		String return_q4 = null;
 		String return_q5 = null;
-		
-		BufferedWriter bw = null;
-		PrintWriter writer = null;
-		
-		try {
-			bw = new BufferedWriter(new FileWriter(filePath, true));
-			writer = new PrintWriter(bw, true);
-			
-			writer.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s", name, pw, q1, q2, q3, q4, q5);
-			writer.println();
-			
-			writer.flush();
-			writer.close(); 
-		} catch (Exception e){
-			e.printStackTrace();
-		}
 		
 		switch(q1){
 		case "1":
@@ -130,38 +101,37 @@
 			break;
 		}
 	%>
-	
 	<div class="choice_div">
 		<table class="table_vote">
 			<tr>
 				<td>A. 반하는 이성의 타입</td>
 			</tr>
 			<tr>
-				<td><input type="hidden" value="<%= return_q1 %>" name="return_q1"><hr> </td>
+				<td><%= return_q1 %> <hr> </td>
 			</tr>
 			<tr>
 				<td>A. 사랑 유형 타입</td>
 			</tr>
 			<tr>
-				<td><input type="hidden" value="<%= return_q2 %>" name="return_q2"> <hr></td>
+				<td><%= return_q2 %> <hr></td>
 			</tr>
 			<tr>
 				<td>A. 바람기 테스트</td>
 			</tr>
 			<tr>
-				<td><input type="hidden" value="<%= return_q3 %>" name="return_q3"> <hr> </td>
+				<td><%= return_q3 %> <hr> </td>
 			</tr>
 			<tr>
 				<td>A. 원하는 첫키스 장소</td>
 			</tr>
 			<tr>
-				<td><input type="hidden" value="<%= return_q4 %>" name="return_q4"> <hr> </td>
+				<td><%= return_q4 %> <hr> </td>
 			</tr>
 			<tr>
 				<td>A. 성격 테스트 </td>
 			</tr>
 			<tr>
-				<td><input type="hidden" value="<%= return_q5 %>" name="return_q5"> <hr> </td>
+				<td><%= return_q5 %> <hr> </td>
 			</tr>
 			<tr>
 				<td>
@@ -171,8 +141,5 @@
 			</tr>
 		</table>
 	</div>
-	<script>
-		location.href = "vote_serveyResult.jsp?q1=<%=q1%>&q2=<%=q2%>&q3=<%=q3%>&q4=<%=q4%>&q5=<%=q5%>";
-	</script>                                                                                                                                                                                        
 </body>
 </html>
